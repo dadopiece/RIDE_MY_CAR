@@ -41,6 +41,8 @@ user_ids = User.pluck(:id)
     price: Faker::Commerce.price(range: 50..500),
     user_id: user_ids.sample # Sélectionne un user_id aléatoire parmi la liste
   )
+
+  
 end
 
 puts "70 voitures créées."

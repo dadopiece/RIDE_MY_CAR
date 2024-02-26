@@ -1,1 +1,12 @@
-hi from index
+
+Index
+<% @cars.each do |car| %>
+  <div>
+    <% if car.photo.attached? %>
+      <%= cl_image_tag car.photo.key %>
+    <% end %>
+    Model: <%= car.model %>
+    Brand: <%= car.brand %>
+    Price: <%= car.price %>
+  </div>
+<% end %>
