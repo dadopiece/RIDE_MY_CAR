@@ -9,26 +9,31 @@
 #   end
 # Assurez-vous d'inclure 'bcrypt' dans votre Gemfile pour utiliser `has_secure_password`
 require 'faker'
-require 'bcrypt'
 
 # Effacer les données existantes
-User.delete_all
-Car.delete_all
-Booking.delete_all
 
-# Création de 50 utilisateurs
-100.times do
+# User.delete_all
+# Car.delete_all
+# Booking.delete_all
+
+# OU
+
+# rails db:seed:replant dans le terminal
+
+
+# Création de 10 utilisateurs
+10.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    password_digest: BCrypt::Password.create('password'),
+    password: "password",
     phone_number: Faker::PhoneNumber.phone_number,
     valid_driver_license: Faker::Boolean.boolean
   )
 end
 
-puts "100 utilisateurs créés."
+puts "10 utilisateurs créés."
 
 # Récupération des IDs des utilisateurs
 user_ids = User.pluck(:id)
@@ -41,8 +46,6 @@ user_ids = User.pluck(:id)
     price: Faker::Commerce.price(range: 50..500),
     user_id: user_ids.sample # Sélectionne un user_id aléatoire parmi la liste
   )
-
-  
 end
 
 puts "70 voitures créées."
