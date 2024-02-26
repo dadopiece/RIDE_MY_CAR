@@ -1,1 +1,8 @@
 hi from new
+
+<%= simple_form_for [@car] do |f| %>
+  <%= f.input :price %>
+  <%= f.input :brand %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
