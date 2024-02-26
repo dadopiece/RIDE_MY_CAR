@@ -3,6 +3,7 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.all
+    @car = Car.new()
   end
 
   def show
@@ -10,7 +11,7 @@ class CarsController < ApplicationController
   end
 
   def new
-    @car = Car.create
+    @car = Car.new()
   end
 
   def create

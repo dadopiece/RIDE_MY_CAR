@@ -18,7 +18,7 @@
               Quelques détails supplémentaires sur la voiture ici.
             </p>
             <p class="card-text">
-              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
+              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par nuit") %></strong>
             </p>
           </div>
           <div class="card-footer">
@@ -28,4 +28,10 @@
       </div>
     <% end %>
   </div>
+</div>
+
+
+<div data-controller="toggle" class="mt-5">
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
+  <%= render "form", car: @car %>
 </div>
