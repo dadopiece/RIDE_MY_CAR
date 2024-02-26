@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <!-- Affichage des détails de la voiture -->
       <div class="car-details">
-        <%#= image_tag @car.image_url, class: "car-image img-fluid", alt: "Image de la voiture" %>
+        <%= image_tag @car.image_url, class: "car-image img-fluid", alt: "Image de la voiture" %>
         <h2 class="car-model"><%= @car.model %></h2>
         <p class="car-brand"><strong>Brand :</strong> <%= @car.brand %></p>
         <!-- Ajoutez d'autres détails de la voiture si nécessaire -->

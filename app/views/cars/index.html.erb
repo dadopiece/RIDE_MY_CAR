@@ -1,32 +1,28 @@
-<div class="container">
-  <div class="row justify-content-start">
-    <div class="col-md-6">
-      <%= form_tag cars_path, method: :get, class: "filter-form" do %>
-        <div class="form-group">
-          <%= label_tag :brand, 'Marque', style: "font-weight: bold;" %>
-          <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Entrez la marque", style: "font-weight: light;" %>
-        </div>
-
-        <div class="form-group">
-          <%= label_tag :model, 'Modèle', style: "font-weight: bold;" %>
-          <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Entrez le modèle", style: "font-weight: light;" %>
-        </div>
-
-        <div class="form-group">
-          <%= label_tag :max_price, 'Prix Max', style: "font-weight: bold;" %>
-          <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Entrez le prix maximum", style: "font-weight: light;" %>
-        </div>
-
-        <%= submit_tag 'Filtrer', class: "btn btn-primary" %>
-      <% end %>
+<div class="py-4 px-3 bg-white shadow" style="position: sticky; top: 0; z-index: 10">
+  <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center" do %>
+    <div class="form-group">
+      <%= label_tag :brand, 'Marque', style: "font-weight: bold;" %>
+      <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Entrez la marque", style: "font-weight: light;" %>
     </div>
-  </div>
+
+    <div class="form-group">
+      <%= label_tag :model, 'Modèle', style: "font-weight: bold;" %>
+      <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Entrez le modèle", style: "font-weight: light;" %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :max_price, 'Prix Max', style: "font-weight: bold;" %>
+      <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Entrez le prix maximum", style: "font-weight: light;" %>
+    </div>
+
+    <%= submit_tag 'Filtrer', class: "btn btn-primary" %>
+  <% end %>
 </div>
 
 <div class="container mt-3">
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     <% @cars.each do |car| %>
-      <div class="col-md-4">
+      <div class="col">
         <div class="card h-100">
           <img class="card-img-top" src="<%= car.image_url %>" alt="<%= car.brand %> <%= car.model %> image">
           <div class="card-body">
@@ -40,12 +36,13 @@
             </p>
           </div>
           <div class="card-footer">
-            <%= link_to "Voir les détails", car_path(car), class: "btn btn-primary" %>
+            <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+</div>
 
 <div data-controller="toggle" class="mt-5">
   <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
