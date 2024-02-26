@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/index'
