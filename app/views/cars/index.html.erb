@@ -5,6 +5,19 @@
   <%= link_to "Se connecter", new_user_session_path, class: "btn btn-primary" %>
 <% end %>
 
+<%= form_tag cars_path, method: :get do %>
+  <%= label_tag :brand, 'Marque' %>
+  <%= text_field_tag :brand, params[:brand] %>
+
+  <%= label_tag :model, 'Modèle' %>
+  <%= text_field_tag :model, params[:model] %>
+
+  <%= label_tag :max_price, 'Prix Max' %>
+  <%= number_field_tag :max_price, params[:max_price] %>
+
+  <%= submit_tag 'Filtrer' %>
+<% end %>
+
 <div class="container mt-3">
   <div class="row">
     <% @cars.each do |car| %>
