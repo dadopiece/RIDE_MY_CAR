@@ -1,4 +1,35 @@
-hi from show
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Affichage des détails de la voiture -->
+      <div class="car-details">
+        <%= image_tag @car.image_url, class: "car-image img-fluid", alt: "Image de la voiture" %>
+        <h2 class="car-model"><%= @car.model %></h2>
+        <p class="car-brand"><strong>Brand :</strong> <%= @car.brand %></p>
+        <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Formulaire de réservation -->
+      <div class="reservation-form">
+        <h2>Réserver cette voiture</h2>
+        <%= simple_form_for @booking do |f| %>
+          <div class="form-group">
+            <%= f.label :start_date, "Date de début" %>
+            <%= f.date_field :start_date, class: "form-control", placeholder: "jj/mm/aaaa" %>
+          </div>
 
-  <%= cl_image_tag @car.photo.key, height: 300, crop: :fill %>
+          <div class="form-group">
+            <%= f.label :end_date, "Date de fin" %>
+            <%= f.date_field :end_date, class: "form-control", placeholder: "jj/mm/aaaa" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Réserver", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
