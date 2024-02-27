@@ -1,34 +1,35 @@
 <% if user_signed_in? %>
-  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
 <% else %>
-  <%= link_to "Créer un compte", new_user_registration_path %>
-  <%= link_to "Se connecter", new_user_session_path %>
-<% end %>
-Index
-<% @cars.each do |car| %>
-  <div>
-    <% if car.photo.attached? %>
-      <%= cl_image_tag car.photo.key %>
-    <% end %>
-    Model: <%= car.model %>
-    Brand: <%= car.brand %>
-    Price: <%= car.price %>
-  </div>
+  <%= link_to "Créer un compte", new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to "Se connecter", new_user_session_path, class: "btn btn-primary" %>
 <% end %>
 
-<<<<<<< HEAD
+<div class="container mt-3">
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="<%= car.image_url %>" alt="<%= car.brand %> <%= car.model %> image">
+          <div class="card-body">
+            <h5 class="card-title"><%= car.brand %> <%= car.model %></h5>
+            <p class="card-text">
+              <!-- Vous pouvez ajouter plus de détails ici -->
+              Quelques détails supplémentaires sur la voiture ici.
+            </p>
+            <p class="card-text">
+              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
+            </p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "Voir les détails", car_path(car), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 <div data-controller="toggle" class="mt-5">
   <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
   <%= render "form", car: @car %>
 </div>
-=======
- <% @cars.each do |car| %>
-    <div class="card">
-      <h2><%= car.model %></h2>
-      <h2><%= car.brand %></h2>
-      <h2><%= car.price %></h2>
-      <!-- Vous pouvez ajouter plus d'informations ou de balises ici selon vos besoins -->
-    </div>
-  <% end %>
->>>>>>> e98922cbf2a9646bf846fef90301d352f8c7bd57
