@@ -16,6 +16,13 @@ Index
   </div>
 <% end %>
 
+<<<<<<< HEAD
+
+<div data-controller="toggle" class="mt-5">
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
+  <%= render "form", car: @car %>
+</div>
+=======
  <% @cars.each do |car| %>
     <div class="card">
       <h2><%= car.model %></h2>
@@ -24,3 +31,4 @@ Index
       <!-- Vous pouvez ajouter plus d'informations ou de balises ici selon vos besoins -->
     </div>
   <% end %>
+>>>>>>> e98922cbf2a9646bf846fef90301d352f8c7bd57
