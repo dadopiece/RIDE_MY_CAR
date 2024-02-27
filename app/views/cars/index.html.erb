@@ -15,3 +15,12 @@ Index
     Price: <%= car.price %>
   </div>
 <% end %>
+
+ <% @cars.each do |car| %>
+    <div class="card">
+      <h2><%= car.model %></h2>
+      <h2><%= car.brand %></h2>
+      <h2><%= car.price %></h2>
+      <!-- Vous pouvez ajouter plus d'informations ou de balises ici selon vos besoins -->
+    </div>
+  <% end %>
