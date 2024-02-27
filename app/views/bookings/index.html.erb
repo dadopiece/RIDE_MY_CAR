@@ -1,3 +1,8 @@
 <h1>Bookings#index</h1>
 <p>Find me in app/views/bookings/index.html.erb</p>
 
+
+<% @bookings.each do |l| %>
+  <%= l.car.brand %>
+  
+<% end %>

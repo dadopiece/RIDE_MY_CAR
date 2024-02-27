@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.car_id = params[:car_id]
+    @booking.user = current_user
 
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.select{|booking| booking.user == current_user}
   end
 
   private
