@@ -325,7 +325,6 @@ DEPENDENCIES
   devise (~> 4.9, >= 4.9.3)
   dotenv-rails
   error_highlight (>= 0.4.0)
-  faker (~> 3.2)
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
