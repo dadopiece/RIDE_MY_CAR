@@ -12,15 +12,10 @@
 # Assurez-vous que Faker est requis si vous n'avez pas déjà
 require 'faker'
 
-# Ou si vous préférez utiliser une image aléatoire pour chaque voiture (via Faker) :
-Car.find_each do |car|
-  # Génère une nouvelle URL d'image aléatoire pour chaque voiture
-  random_image_url = Faker::LoremFlickr.image(size: "300x300", search_terms: ['car'])
-
-  # Met à jour la voiture avec l'URL d'image
-  car.update(image_url: random_image_url)
-
-  # Si vous préférez utiliser la même URL fixe pour toutes les voitures, remplacez `random_image_url` par `fixed_image_url` dans la ligne ci-dessus.
+# Dans votre fichier de seed, pour créer des images différentes pour chaque voiture
+Car.find_each.with_index(1) do |car, index|
+  # Utilisez l'index pour générer une image unique
+  unique_image_url = Faker::LoremFlickr.image(size: "300x300", search_terms: ['car'], match_all: true) + "?random=#{index}"
+  car.update(image_url: unique_image_url)
 end
-
 puts "Toutes les voitures ont été mises à jour avec des URLs d'image."
