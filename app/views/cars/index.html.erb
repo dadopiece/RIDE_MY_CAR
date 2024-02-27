@@ -1,17 +1,27 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-md-6">
+      <%= form_tag cars_path, method: :get, class: "filter-form" do %>
+        <div class="form-group">
+          <%= label_tag :brand, 'Marque', style: "font-weight: bold;" %>
+          <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Entrez la marque", style: "font-weight: light;" %>
+        </div>
 
+        <div class="form-group">
+          <%= label_tag :model, 'Modèle', style: "font-weight: bold;" %>
+          <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Entrez le modèle", style: "font-weight: light;" %>
+        </div>
 
-<%= form_tag cars_path, method: :get do %>
-  <%= label_tag :brand, 'Marque' %>
-  <%= text_field_tag :brand, params[:brand] %>
+        <div class="form-group">
+          <%= label_tag :max_price, 'Prix Max', style: "font-weight: bold;" %>
+          <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Entrez le prix maximum", style: "font-weight: light;" %>
+        </div>
 
-  <%= label_tag :model, 'Modèle' %>
-  <%= text_field_tag :model, params[:model] %>
-
-  <%= label_tag :max_price, 'Prix Max' %>
-  <%= number_field_tag :max_price, params[:max_price] %>
-
-  <%= submit_tag 'Filtrer' %>
-<% end %>
+        <%= submit_tag 'Filtrer', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="container mt-3">
   <div class="row">
@@ -26,7 +36,7 @@
               Quelques détails supplémentaires sur la voiture ici.
             </p>
             <p class="card-text">
-              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par nuit") %></strong>
+              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
             </p>
           </div>
           <div class="card-footer">
