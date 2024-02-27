@@ -1,1 +1,17 @@
-hi from index
+<% if user_signed_in? %>
+  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Créer un compte", new_user_registration_path %>
+  <%= link_to "Se connecter", new_user_session_path %>
+<% end %>
+Index
+<% @cars.each do |car| %>
+  <div>
+    <% if car.photo.attached? %>
+      <%= cl_image_tag car.photo.key %>
+    <% end %>
+    Model: <%= car.model %>
+    Brand: <%= car.brand %>
+    Price: <%= car.price %>
+  </div>
+<% end %>
