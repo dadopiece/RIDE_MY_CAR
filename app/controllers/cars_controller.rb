@@ -4,7 +4,19 @@ class CarsController < ApplicationController
   def index
     @cars = Car.all
     @car = Car.new()
-  end
+
+      if params[:brand].present?
+        @cars = @cars.where('brand ILIKE ?', "%#{params[:brand]}%")
+      end
+
+      if params[:model].present?
+        @cars = @cars.where('model ILIKE ?', "%#{params[:model]}%")
+      end
+
+      if params[:max_price].present?
+        @cars = @cars.where('price <= ?', params[:max_price])
+      end
+    end
 
   def show
     @car = Car.find(params[:id])

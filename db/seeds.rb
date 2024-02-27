@@ -12,15 +12,61 @@
 # Assurez-vous que Faker est requis si vous n'avez pas déjà
 require 'faker'
 
-# Ou si vous préférez utiliser une image aléatoire pour chaque voiture (via Faker) :
-Car.find_each do |car|
-  # Génère une nouvelle URL d'image aléatoire pour chaque voiture
-  random_image_url = Faker::LoremFlickr.image(size: "300x300", search_terms: ['car'])
 
-  # Met à jour la voiture avec l'URL d'image
-  car.update(image_url: random_image_url)
+# Nettoyage de la base de données
+puts "Nettoyage de la base de données..."
+User.destroy_all
+Car.destroy_all
+Booking.destroy_all
 
-  # Si vous préférez utiliser la même URL fixe pour toutes les voitures, remplacez `random_image_url` par `fixed_image_url` dans la ligne ci-dessus.
+puts "Création de nouveaux enregistrements..."
+
+# Configurer Faker pour utiliser la locale française
+Faker::Config.locale = 'fr'
+
+# Création de 50 utilisateurs
+50.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'password',
+    password_confirmation: 'password',
+    phone_number: Faker::PhoneNumber.phone_number,
+    valid_driver_license: Faker::Boolean.boolean
+  )
 end
 
-puts "Toutes les voitures ont été mises à jour avec des URLs d'image."
+# Récupération des IDs des utilisateurs
+user_ids = User.pluck(:id)
+
+# Création de 70 voitures
+70.times do
+  car = Car.create!(
+    model: Faker::Vehicle.model,
+    brand: Faker::Vehicle.make,
+    price: Faker::Commerce.price(range: 5000..30000),
+    user_id: user_ids.sample,
+    image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']),
+    address: Faker::Address.street_address + ", " + "75" + rand(001..20).to_s.rjust(3, '0') + " Paris"
+  )
+
+  # Générer une URL unique pour chaque voiture
+  car.update(image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{car.id}")
+end
+
+# Création de réservations
+50.times do
+  start_date = Faker::Date.backward(days: 14)
+  end_date = start_date + rand(1..10).days
+
+  Booking.create!(
+    car_id: Car.pluck(:id).sample,
+    user_id: user_ids.sample,
+    start_date: start_date,
+    end_date: end_date,
+    status: ['confirmed', 'pending', 'cancelled'].sample
+  )
+end
+
+puts "Données générées avec succès."
