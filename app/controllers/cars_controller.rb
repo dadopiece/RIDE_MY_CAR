@@ -38,7 +38,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params.with_defaults(user_id: User.first.id))
     if @car.save
-      redirect_to car_path(@car)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
