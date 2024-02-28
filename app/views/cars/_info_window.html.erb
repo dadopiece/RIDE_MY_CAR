@@ -1,12 +1,11 @@
-<div style="min-width: 200px;">
-  <h3 style="margin-bottom: 5px;"><%= car.brand %> <%= car.model %></h3>
+<div>
+  <h3><%= car.brand %> <%= car.model %></h3>
   <% if car.photo.attached? %>
-    <%= image_tag car.photo, style: "width: 100%; height: auto; margin-bottom: 5px;" %>
-  <% elsif car.image_url.present? %>
-    <img src="<%= car.image_url %>" style="width: 100%; height: auto; margin-bottom: 5px;">
+    <%= image_tag car.photo, size: "100x100" %>
   <% else %>
-    <p>Pas d'image disponible</p>
+    <img src="<%= car.image_url %>" alt="Car Image" style="width: 100px; height: 100px;">
   <% end %>
-  <p style="margin-bottom: 5px;"><strong>Prix :</strong> <%= car.price %>€</p>
-  <p><strong>Adresse :</strong> <%= car.address %></p>
+  <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></p>
+  <p><%= car.address %></p>
+  <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
 </div>
