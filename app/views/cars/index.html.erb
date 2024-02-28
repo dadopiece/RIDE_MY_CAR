@@ -25,6 +25,7 @@
 </div>
 
 <div class="container mt-3">
+<h4 class="px-5 py-5"> LIST 📋 : </h4>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     <% @cars.each do |car| %>
       <div class="col">
@@ -53,7 +54,13 @@
   </div>
 </div>
 
-<div style="margin-top: 50px; width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div class="px-5 py-5">
+  <div data-controller="togglableElement" class="mt-5">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary"></button>
+      <div style="margin-top: 50px; width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+    </div>
+</div>
