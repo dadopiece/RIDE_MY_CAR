@@ -16,7 +16,7 @@ class CarsController < ApplicationController
       if params[:max_price].present?
         @cars = @cars.where('price <= ?', params[:max_price])
       end
-    end
+  end
 
   def show
     @car = Car.find(params[:id])

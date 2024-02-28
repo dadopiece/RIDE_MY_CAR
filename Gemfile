@@ -7,6 +7,8 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 gem 'faker', '~> 3.2'
 
+gem "geocoder"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
