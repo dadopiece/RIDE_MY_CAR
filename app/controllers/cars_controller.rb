@@ -32,7 +32,7 @@ class CarsController < ApplicationController
     if @car.save
       redirect_to bookings_index_path(@car)
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessablesr_entity
     end
   end
 
