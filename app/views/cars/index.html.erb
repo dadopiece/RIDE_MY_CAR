@@ -45,13 +45,14 @@
             </p>
           </div>
           <div class="card-footer">
-            <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
+            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-primary" >Réserver</button>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
 
 <div style="margin-top: 50px; width: 100%; height: 600px;"
   data-controller="map"
