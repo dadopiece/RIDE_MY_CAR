@@ -4,8 +4,8 @@
     <div class="col-md-6">
       <!-- Affichage des détails de la voiture -->
       <div class="car-details">
+        <%= image_tag @car.image_url, class: "car-image img-fluid", alt: "Image de la voiture" %>
 
-        <img class="card-img-top" src="<%@car.image_url%>" alt="<%= @car.brand %> <%= @car.model %> image">
         <h2 class="car-model"><%= @car.model %></h2>
         <p class="car-brand"><strong>Brand :</strong> <%= @car.brand %></p>
         <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
@@ -15,7 +15,7 @@
       <!-- Formulaire de réservation -->
       <div class="reservation-form">
         <h2>Réserver cette voiture</h2>
-        <%= simple_form_for @booking do |f| %>
+        <%= simple_form_for [@car, @booking] do |f| %>
           <div class="form-group">
             <%= f.label :start_date, "Date de début" %>
             <%= f.date_field :start_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
