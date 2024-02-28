@@ -24,7 +24,11 @@
     <% @cars.each do |car| %>
       <div class="col">
         <div class="card h-100">
-          <img class="card-img-top" src="<%= car.image_url %>" alt="<%= car.brand %> <%= car.model %> image">
+          <% if car.photo.attached? %>
+            <%= cl_image_tag car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            Pas d'image
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= car.brand %> <%= car.model %></h5>
             <p class="card-text">
@@ -44,3 +48,13 @@
   </div>
 </div>
 
+<div data-controller="toggle" class="mt-5">
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
+  <%= render "form", car: @car %>
+</div>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<%= @markers %>
