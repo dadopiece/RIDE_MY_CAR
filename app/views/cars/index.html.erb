@@ -2,17 +2,22 @@
   <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center" do %>
     <div class="form-group">
       <%= label_tag :brand, 'Marque', style: "font-weight: bold;" %>
-      <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Entrez la marque", style: "font-weight: light;" %>
+      <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Enter the brand", style: "font-weight: light;" %>
     </div>
 
     <div class="form-group">
       <%= label_tag :model, 'Modèle', style: "font-weight: bold;" %>
-      <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Entrez le modèle", style: "font-weight: light;" %>
+      <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Enter the model", style: "font-weight: light;" %>
+    </div>
+
+ <div class="form-group">
+      <%= label_tag :address, 'Address', style: "font-weight: bold;" %>
+      <%= text_field_tag :address, params[:address], class: "form-control", placeholder: "Enter address", style: "font-weight: light;" %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :max_price, 'Prix Max', style: "font-weight: bold;" %>
-      <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Entrez le prix maximum", style: "font-weight: light;" %>
+      <%= label_tag :max_price, 'Price Max €€', style: "font-weight: bold;" %>
+      <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Enter the price max", style: "font-weight: light;" %>
     </div>
 
     <%= submit_tag 'Filtrer', class: "btn btn-primary" %>
@@ -25,7 +30,7 @@
       <div class="col">
         <div class="card h-100">
           <% if car.photo.attached? %>
-            <%= cl_image_tag car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+            <%= cl_image_tag car.photo.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
           <% else %>
             Pas d'image
           <% end %>
@@ -48,12 +53,7 @@
   </div>
 </div>
 
-<div data-controller="toggle" class="mt-5">
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new car</button>
-  <%= render "form", car: @car %>
-</div>
-
-<div style="width: 100%; height: 600px;"
+<div style="margin-top: 50px; width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
