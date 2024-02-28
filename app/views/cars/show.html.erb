@@ -5,7 +5,7 @@
       <!-- Affichage des détails de la voiture -->
       <div class="car-details">
 
-        <img class="card-img-top" src="<%= @car.image_url %>" alt="<%= @car.brand %> <%= @car.model %> image">
+        <img class="card-img-top" src="<%@car.image_url%>" alt="<%= @car.brand %> <%= @car.model %> image">
         <h2 class="car-model"><%= @car.model %></h2>
         <p class="car-brand"><strong>Brand :</strong> <%= @car.brand %></p>
         <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
