@@ -11,6 +11,7 @@
 
 # Assurez-vous que Faker est requis si vous n'avez pas déjà
 require 'faker'
+require "open-uri"
 
 
 # Nettoyage de la base de données
@@ -25,7 +26,7 @@ puts "Création de nouveaux enregistrements..."
 Faker::Config.locale = 'fr'
 
 # Création de 50 utilisateurs
-50.times do
+10.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -41,22 +42,22 @@ end
 user_ids = User.pluck(:id)
 
 # Création de 70 voitures
-70.times do
+10.times do |index|
   car = Car.create!(
     model: Faker::Vehicle.model,
     brand: Faker::Vehicle.make,
     price: Faker::Commerce.price(range: 5000..30000),
     user_id: user_ids.sample,
-    image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']),
     address: Faker::Address.street_address + ", " + "75" + rand(001..20).to_s.rjust(3, '0') + " Paris"
   )
 
   # Générer une URL unique pour chaque voiture
-  car.update(image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{car.id}")
+  file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{car.id}")
+  car.photo.attach(io: file, filename: "car_#{index + 1}.png", content_type: "image/jpg")
 end
 
 # Création de réservations
-50.times do
+10.times do
   start_date = Faker::Date.backward(days: 14)
   end_date = start_date + rand(1..10).days
 
