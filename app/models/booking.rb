@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
     return unless start_date && end_date
 
     days = (end_date - start_date).to_i
-    self.price = days * car.daily_price
+    self.price = days * car.price
   end
 end
 
