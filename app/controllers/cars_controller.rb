@@ -36,6 +36,17 @@ class CarsController < ApplicationController
     end
   end
 
+  def index
+    @cars = Car.all
+    # The `geocoded` scope filters only cars with coordinates
+    @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+      }
+    end
+  end
+
   private
 
   def car_params
