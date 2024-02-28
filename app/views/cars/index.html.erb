@@ -24,7 +24,11 @@
     <% @cars.each do |car| %>
       <div class="col">
         <div class="card h-100">
-          <img class="card-img-top" src="<%= car.image_url %>" alt="<%= car.brand %> <%= car.model %> image">
+          <% if car.photo.attached? %>
+            <%= cl_image_tag car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            Pas d'image
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= car.brand %> <%= car.model %></h5>
             <p class="card-text">
@@ -43,4 +47,3 @@
     <% end %>
   </div>
 </div>
-
