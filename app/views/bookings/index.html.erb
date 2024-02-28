@@ -1,8 +1,15 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>Here are the cars you booked !</h1>
 
 
-<% @bookings.each do |l| %>
-  <%= l.car.brand %>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+<% @bookings.each do |booking| %>
+
+  <div class="card h-100">
+    <div class="card-body">
+      <%= cl_image_tag booking.car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top"%>
+      <h5 class="card-title"> <%= booking.car.brand %> <%= booking.car.model %></h5>
+      <h6>from : <%= booking.start_date&.to_date %>, to : <%= booking.end_date&.to_date %> 🚘</h6>
+  </div>
+</div>
 
 <% end %>
