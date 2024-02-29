@@ -40,7 +40,7 @@
   font-weight: bold;
   background-color: #ffffff;
   border: 1px solid #ced4da;
-  color: #495057;
+  color: #AD88C6;
 }
 
 .custom-button:hover {
@@ -85,7 +85,7 @@
 /* Styles pour les boutons */
 .btn-custom {
   border-radius: 30px; /* Bordures arrondies pour les boutons */
-  background-color: #495057; /* Couleur de fond pour les boutons */
+  background-color: #AD88C6; /* Couleur de fond pour les boutons */
   color: white; /* Couleur du texte pour les boutons */
   padding: 8px 16px; /* Padding pour les boutons */
   font-weight: bold; /* Police en gras pour les boutons */
@@ -169,5 +169,3 @@
   flex-direction: column;
   justify-content: space-between; /* cela permettra de pousser le footer au bas de la carte */
 }
-
-
