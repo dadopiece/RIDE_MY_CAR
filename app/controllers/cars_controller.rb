@@ -4,6 +4,10 @@ class CarsController < ApplicationController
   def index
     @cars = Car.all
     @car = Car.new
+    
+    if params[:search].present?
+      @cars = @cars.where("brand ILIKE ? OR model ILIKE ? OR address ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    end
 
     if params[:brand].present?
       @cars = @cars.where('brand ILIKE ?', "%#{params[:brand]}%")
