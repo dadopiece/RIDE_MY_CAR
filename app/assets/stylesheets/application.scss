@@ -157,3 +157,17 @@
 .row {
   margin-bottom: 2rem; /* Augmenter pour plus d'espace entre les rangées de cartes */
 }
+
+.card-img-top {
+  width: 100%; /* pour que l'image occupe toute la largeur de la carte */
+  height: 160px; /* ou toute autre hauteur fixe appropriée */
+  object-fit: cover; /* pour s'assurer que l'image couvre bien l'espace défini */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* cela permettra de pousser le footer au bas de la carte */
+}
+
+
