@@ -33,6 +33,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @booking = Booking.new
+    render layout: params[:layout] == "false" ? false : true
   end
 
   def new

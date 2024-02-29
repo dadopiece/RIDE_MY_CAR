@@ -1,39 +1,58 @@
-
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-end">
     <div class="col-md-6">
-      <!-- Affichage des détails de la voiture -->
-      <div class="car-details">
-        <% if @car.photo.attached? %>
-          <%= cl_image_tag @car.photo.key, height: 300, width: 400, crop: :fill, class: "car-image img-fluid" %>
-        <% else %>
-          Pas d'image
-        <% end %>
-
-        <h2 class="car-model"><%= @car.model %></h2>
-        <p class="car-brand"><strong>Brand :</strong> <%= @car.brand %></p>
-        <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
+      <div class="card">
+        <div class="card-body">
+          <% if @car.photo.attached? %>
+            <%= cl_image_tag @car.photo.key, height: 160, width: 160, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            Pas d'image
+          <% end %>
+          <h5 class="card-title"><%= @car.brand %> <%= @car.model %></h5>
+          <p class="card-text">
+            <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
+            <strong>Brand :</strong> <%= @car.brand %>
+          </p>
+          <p class="card-text">
+            Prix par jour : <%= number_to_currency(@car.price, unit: "€", delimiter: " ", format: "%n %u") %>
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-md-6">
-      <!-- Formulaire de réservation -->
-      <div class="reservation-form">
-        <h2>Réserver cette voiture</h2>
-        <%= simple_form_for [@car, @booking] do |f| %>
-          <div class="form-group">
-            <%= f.label :start_date, "Date de début" %>
-            <%= f.date_field :start_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Reserve my car</h2>
+          <%= simple_form_for [@car, @booking] do |f| %>
+            <div class="form-group">
+              <%= f.label :start_date, "Date de début" %>
+              <%= f.date_field :start_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
+            </div>
 
-          <div class="form-group">
-            <%= f.label :end_date, "Date de fin" %>
-            <%= f.date_field :end_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
-          </div>
+            <div class="form-group">
+              <%= f.label :end_date, "Date de fin" %>
+              <%= f.date_field :end_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
+            </div>
 
-          <div class="actions">
-            <%= f.submit "Réserver", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+            <div class="form-group">
+              <%= f.label :price, "Prix total" %>
+              <%= f.text_field :price, class: "form-control", readonly: true %>
+            </div>
+
+            <div class="container">
+              <div class="form-wrapper">
+                <h2>Reserve my car</h2>
+                <!-- Formulaire -->
+                <p>Réservation pour <span id="total-days">0</span> days</p>
+                <p>Prix total : <span id="total-price">0</span> € </p>
+              </div>
+              
+            </div>
+            <div class="actions">
+              <%= f.submit "Réserver", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

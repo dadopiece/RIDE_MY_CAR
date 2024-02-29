@@ -24,6 +24,31 @@
   <% end %>
 </div>
 
+
+<div class="container mt-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% @cars.each do |car| %>
+      <div class="col">
+        <div class="card h-100">
+          <% if car.photo.attached? %>
+            <%= cl_image_tag car.photo.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            Pas d'image
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= car.brand %> <%= car.model %></h5>
+            <p class="card-text">
+              <!-- Vous pouvez ajouter plus de détails ici -->
+              Quelques détails supplémentaires sur la voiture ici.
+            </p>
+            <p class="card-text">
+              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
+            </p>
+          </div>
+          <div class="card-footer">
+            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-primary" >Réserver</button>
+          </div>
+
 <div class="container mt-3" data-controller="switch">
 
     <div class="container mt-3 text-center">
@@ -60,12 +85,20 @@
         </div>
         <div class="card-footer">
           <%= link_to "Réserver", car_path(car), class: "btn btn-custom" %>
+
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
+
+
+<div style="margin-top: 50px; width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<%= @markers %>
 
   <div style="width: 100%; height: 600px;"
     data-controller="map"
@@ -74,3 +107,4 @@
     data-switch-target="map">
   </div>
 </div>
+

@@ -9,6 +9,8 @@ gem 'faker', '~> 3.2'
 
 gem "geocoder"
 
+gem "jquery-rails"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
