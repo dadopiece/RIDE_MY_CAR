@@ -28,17 +28,17 @@
 <div class="container mt-3" data-controller="switch">
 
     <div class="container mt-3 text-center">
-  <div class="btn-group" role="group" aria-label="List map toggle">
-    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="cards" class="btn btn-toggle active">
+  <div class="btn-group" data-switch-target="tabs" >
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="list" class="btn btn-primary btn-toggle active">
       LIST 📋
     </button>
-    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="map" class="btn btn-toggle">
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="map" class="btn btn-outline-primary btn-toggle">
       MAP 🌍
     </button>
   </div>
 </div>
 
-<div data-switch-target="cards tabs" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+<div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
   <% @cars.each do |car| %>
     <div class="col">
       <div class="card h-100 card-custom">
@@ -60,7 +60,7 @@
         </div>
 
           <div class="card-footer">
-            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-custom"> Réserver</button>
+            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-primary btn-custom"> Réserver</button>
           </div>
 
       </div>
@@ -68,11 +68,11 @@
   <% end %>
 </div>
 
-<div style="width: 100%; height: 600px;"
-    data-controller="switch"
+<div class="d-none"
+    style="width: 100%; height: 600px;"
+    data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-switch-target="map tabs"
-    class="">
+    data-switch-target="map">
   </div>
 </div>
