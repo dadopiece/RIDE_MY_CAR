@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :cars, only: %i[index show new create] do
-    resources :bookings, only: %i[new create ]
+    resources :bookings, only: %i[new create]
   end
 
   resources :bookings, only: %i[index]
+  
+  resources :users, only: %i[index]
 
   # Defines the root path route ("/")
   root to: "cars#index"
