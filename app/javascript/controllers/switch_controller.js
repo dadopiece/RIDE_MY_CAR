@@ -3,6 +3,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["tabs", "cards", "map"]
 
+  connect() {
+    console.log(this.tabsTarget)
+  }
+
   handleClick(event) {
     if (event.params.toggabletarget === "list") {
       this.showCards()
