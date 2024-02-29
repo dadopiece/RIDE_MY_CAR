@@ -1,5 +1,3 @@
-
-
 <div class="py-4 px-3 bg-white shadow" style="position: sticky; top: 0; z-index: 10">
   <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center" do %>
     <div class="form-group">
@@ -26,8 +24,19 @@
   <% end %>
 </div>
 
-<div class="container mt-3">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+<div class="container mt-3" data-controller="switch">
+
+    <div class="py-5" data-switch-target="tabs">
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="list" class="btn btn-primary ">
+      LIST 📋
+    </button>
+
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="map" class="btn btn-outline-primary">
+      MAP 🌍
+    </button>
+  </div>
+
+  <div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     <% @cars.each do |car| %>
       <div class="col">
         <div class="card h-100">
@@ -37,7 +46,9 @@
             Pas d'image
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= car.brand %> <%= car.model %></h5>
+            <h5 class="card-title">
+              <%= car.brand %> <%= car.model %>
+            </h5>
             <p class="card-text">
               <!-- Vous pouvez ajouter plus de détails ici -->
               Quelques détails supplémentaires sur la voiture ici.
@@ -53,9 +64,11 @@
       </div>
     <% end %>
   </div>
-</div>
 
-<div style="margin-top: 50px; width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-switch-target="map">
+  </div>
+</div>
