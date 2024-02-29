@@ -10,3 +10,119 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+/* Dans votre fichier CSS (par exemple, application.scss) */
+
+.search-input {
+  flex-grow: 1;
+  border: 1px solid #ddd;
+  border-radius: 32px;
+  padding: 8px 20px;
+}
+
+.btn-search {
+  border-radius: 32px;
+  padding: 8px 20px;
+  margin-left: -1px; /* Ajustez selon le style pour que le bouton se colle à l'input */
+}
+
+/* Vous pouvez également redéfinir les styles pour le toggle button et les liens de la navbar si nécessaire */
+
+/* Custom styles for form elements */
+.custom-input {
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+}
+
+.custom-button {
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  color: #495057;
+}
+
+.custom-button:hover {
+  background-color: #f8f9fa;
+}
+
+/* Styles for the form container */
+.filter-form {
+  background-color: #ffffff; /* White background */
+  border-radius: 20px; /* Rounded borders for the outer form */
+  box-shadow: 0 4px 6px rgba(0,0,0,.1); /* Slight shadow around the form */
+  padding: 20px; /* Spacing inside the form */
+}
+
+/* Styles pour les cartes */
+.card-custom {
+  border-radius: 15px; /* Bordures arrondies pour les cartes */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère pour donner du relief */
+  transition: transform 0.2s; /* Animation pour le survol */
+}
+
+.card-custom:hover {
+  transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+/* Placeholder pour l'image s'il n'y a pas de photo */
+.placeholder-image {
+  height: 300px;
+  background-color: #eaeaea; /* Couleur de fond pour le placeholder */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Styles pour le texte des prix */
+.price-text {
+  color: #333; /* Couleur du texte pour les prix */
+}
+
+/* Styles pour les boutons */
+.btn-custom {
+  border-radius: 30px; /* Bordures arrondies pour les boutons */
+  background-color: #495057; /* Couleur de fond pour les boutons */
+  color: white; /* Couleur du texte pour les boutons */
+  padding: 8px 16px; /* Padding pour les boutons */
+  font-weight: bold; /* Police en gras pour les boutons */
+  border: none; /* Pas de bordure pour les boutons */
+}
+
+.btn-custom:hover {
+  background-color: #6c757d; /* Couleur de fond au survol */
+  color: #fff; /* Couleur du texte au survol */
+}
+
+/* Styles pour les boutons de commutation */
+.btn-toggle {
+  border: 1px solid #ced4da;
+  border-radius: 20px; /* Bordures arrondies pour les boutons */
+  padding: 10px 20px; /* Padding plus grand pour les boutons */
+  margin: 5px; /* Espacement autour des boutons */
+  width: 150px; /* Largeur plus longue pour les boutons */
+  background-color: #ffffff; /* Couleur de fond pour les boutons */
+  color: #495057; /* Couleur du texte pour les boutons */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre légère pour donner du relief */
+}
+
+.btn-toggle.active, .btn-toggle:hover {
+  color: #fff;
+  background-color: #007bff; /* Couleur de fond pour le bouton actif ou au survol */
+  border-color: #007bff;
+}
+
+/* Conteneur pour les boutons centré */
+.container.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group {
+  margin-top: 1rem;
+}
+

@@ -1,69 +1,71 @@
 <div class="py-4 px-3 bg-white shadow" style="position: sticky; top: 0; z-index: 10">
-  <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center" do %>
-    <div class="form-group">
-      <%= label_tag :brand, 'Marque', style: "font-weight: bold;" %>
-      <%= text_field_tag :brand, params[:brand], class: "form-control", placeholder: "Enter the brand", style: "font-weight: light;" %>
+  <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center filter-form" do %>
+    <div class="form-group mx-2">
+      <%= label_tag :brand, 'Marque', class: "form-label" %>
+      <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "Marque" %>
     </div>
 
-    <div class="form-group">
-      <%= label_tag :model, 'Modèle', style: "font-weight: bold;" %>
-      <%= text_field_tag :model, params[:model], class: "form-control", placeholder: "Enter the model", style: "font-weight: light;" %>
+    <div class="form-group mx-2">
+      <%= label_tag :model, 'Modèle', class: "form-label" %>
+      <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "Modèle" %>
     </div>
 
- <div class="form-group">
-      <%= label_tag :address, 'Address', style: "font-weight: bold;" %>
-      <%= text_field_tag :address, params[:address], class: "form-control", placeholder: "Enter address", style: "font-weight: light;" %>
+    <div class="form-group mx-2">
+      <%= label_tag :address, 'Adresse', class: "form-label" %>
+      <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "Adresse" %>
     </div>
 
-    <div class="form-group">
-      <%= label_tag :max_price, 'Price Max €€', style: "font-weight: bold;" %>
-      <%= number_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Enter the price max", style: "font-weight: light;" %>
+    <div class="form-group mx-2">
+      <%= label_tag :max_price, 'Prix Max', class: "form-label" %>
+      <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "Prix Max" %>
     </div>
 
-    <%= submit_tag 'Filtrer', class: "btn btn-primary" %>
+    <%= submit_tag 'Filtrer', class: "btn custom-button" %>
   <% end %>
 </div>
 
 <div class="container mt-3" data-controller="switch">
 
-    <div class="py-5" data-switch-target="tabs">
-    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="list" class="btn btn-primary ">
+    <div class="container mt-3 text-center">
+  <div class="btn-group" role="group" aria-label="List map toggle">
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="list" class="btn btn-toggle active">
       LIST 📋
     </button>
-
-    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="map" class="btn btn-outline-primary">
+    <button data-action="click->switch#handleClick" data-switch-toggableTarget-param="map" class="btn btn-toggle">
       MAP 🌍
     </button>
   </div>
+</div>
 
-  <div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-    <% @cars.each do |car| %>
-      <div class="col">
-        <div class="card h-100">
-          <% if car.photo.attached? %>
-            <%= cl_image_tag car.photo.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
-          <% else %>
-            Pas d'image
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= car.brand %> <%= car.model %>
-            </h5>
-            <p class="card-text">
-              <!-- Vous pouvez ajouter plus de détails ici -->
-              Quelques détails supplémentaires sur la voiture ici.
-            </p>
-            <p class="card-text">
-              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
-            </p>
-          </div>
-          <div class="card-footer">
-            <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
-          </div>
+
+<div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+  <% @cars.each do |car| %>
+    <div class="col">
+      <div class="card h-100 card-custom">
+        <% if car.photo.attached? %>
+          <%= cl_image_tag car.photo.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
+        <% else %>
+          <div class="card-img-top placeholder-image">Pas d'image</div>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= car.brand %> <%= car.model %>
+          </h5>
+          <p class="card-text">
+            Quelques détails supplémentaires sur la voiture ici.
+          </p>
+          <p class="card-text price-text">
+            <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
+          </p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Réserver", car_path(car), class: "btn btn-custom" %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+
 
   <div style="width: 100%; height: 600px;"
     data-controller="map"
