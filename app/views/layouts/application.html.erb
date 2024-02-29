@@ -11,9 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="modal">
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
     <%= yield %>
+
+    <%= render "shared/modal" %>
   </body>
 </html>

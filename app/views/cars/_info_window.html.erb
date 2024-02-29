@@ -1,5 +1,11 @@
-<h2><%= car.brand %></h2>
-<p><%= car.model %></p>
-<p><%= car.price %></p>
-<p><%= car.image_url %></p>
-<p><%= car.address %></p>
+<div>
+  <h3><%= car.brand %> <%= car.model %></h3>
+  <% if car.photo.attached? %>
+    <%= image_tag car.photo, size: "100x100" %>
+  <% else %>
+    <img src="<%= car.image_url %>" alt="Car Image" style="width: 100px; height: 100px;">
+  <% end %>
+  <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></p>
+  <p><%= car.address %></p>
+  <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
+</div>

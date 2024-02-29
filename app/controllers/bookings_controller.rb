@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.car = @car
     @booking.user = current_user
+    @booking.calculate_price # Appel de la méthode pour calculer le prix
 
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
@@ -19,6 +20,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all.select{|booking| booking.user == current_user}
+
   end
 
   private

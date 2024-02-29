@@ -13,7 +13,6 @@
 require 'faker'
 require "open-uri"
 
-
 # Nettoyage de la base de données
 puts "Nettoyage de la base de données..."
 User.destroy_all
@@ -25,7 +24,7 @@ puts "Création de nouveaux enregistrements..."
 # Configurer Faker pour utiliser la locale française
 Faker::Config.locale = 'fr'
 
-# Création de 50 utilisateurs
+# Création de 10 utilisateurs
 10.times do
   User.create!(
     first_name: Faker::Name.first_name,
@@ -41,19 +40,33 @@ end
 # Récupération des IDs des utilisateurs
 user_ids = User.pluck(:id)
 
-# Création de 70 voitures
-10.times do |index|
+# Adresses réelles à Paris
+adresses_paris = [
+  "48 Rue de Rivoli, 75004 Paris",
+  "10 Avenue des Champs-Élysées, 75008 Paris",
+  "15 Rue de Vaugirard, 75006 Paris",
+  "1 Avenue Montaigne, 75008 Paris",
+  "55 Rue du Faubourg Saint-Antoine, 75011 Paris",
+  "128 Rue La Boétie, 75008 Paris",
+  "82 Rue de Maubeuge, 75009 Paris",
+  "70 Rue de Belleville, 75020 Paris",
+  "33 Avenue du Général Leclerc, 75014 Paris",
+  "5 Rue de l'École de Médecine, 75006 Paris"
+]
+
+# Création de 10 voitures avec adresses réelles
+adresses_paris.each_with_index do |adresse, index|
   car = Car.create!(
     model: Faker::Vehicle.model,
     brand: Faker::Vehicle.make,
-    price: Faker::Commerce.price(range: 5000..30000),
+    price: Faker::Commerce.price(range: 50..300),
     user_id: user_ids.sample,
-    address: Faker::Address.street_address + ", " + "75" + rand(001..20).to_s.rjust(3, '0') + " Paris"
+    address: adresse
   )
 
-  # Générer une URL unique pour chaque voiture
-  file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{car.id}")
-  car.photo.attach(io: file, filename: "car_#{index + 1}.png", content_type: "image/jpg")
+  # Générer une URL unique pour chaque voiture et l'attacher
+  file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{index}")
+  car.photo.attach(io: file, filename: "car_#{index + 1}.png", content_type: "image/png")
 end
 
 # Création de réservations
