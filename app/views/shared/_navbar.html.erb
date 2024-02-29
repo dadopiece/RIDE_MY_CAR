@@ -7,7 +7,7 @@
 
 
     <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Ville de location", class: "form-control search-input", id: "navbar-search" %>
+      <%= text_field_tag :search, params[:search], placeholder: "City location", class: "form-control search-input", id: "navbar-search" %>
       <%= submit_tag 'Rechercher', class: "btn btn-search" %>
     <% end %>
 

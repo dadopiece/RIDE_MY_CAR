@@ -7,5 +7,5 @@
   <% end %>
   <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></p>
   <p><%= car.address %></p>
-  <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
+  <%= link_to "Book", car_path(car), class: "btn btn-primary" %>
 </div>

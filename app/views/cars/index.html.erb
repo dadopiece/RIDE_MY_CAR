@@ -1,26 +1,26 @@
-<div class="py-4 px-3 bg-white shadow" style="position: sticky; top: 0; z-index: 10">
+<div class="py-3x px-3 bg-white shadow" style="position: sticky; top: 0; z-index: 10">
   <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center filter-form" do %>
     <div class="form-group mx-2">
-      <%= label_tag :brand, 'Marque', class: "form-label" %>
-      <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "Marque" %>
+      <%= label_tag :brand, 'Brand', class: "form-label" %>
+      <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "Brand" %>
     </div>
 
     <div class="form-group mx-2">
-      <%= label_tag :model, 'Modèle', class: "form-label" %>
-      <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "Modèle" %>
+      <%= label_tag :model, 'Type of car', class: "form-label" %>
+      <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "Type of Car" %>
     </div>
 
     <div class="form-group mx-2">
       <%= label_tag :address, 'Adresse', class: "form-label" %>
-      <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "Adresse" %>
+      <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "Address" %>
     </div>
 
     <div class="form-group mx-2">
-      <%= label_tag :max_price, 'Prix Max', class: "form-label" %>
-      <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "Prix Max" %>
+      <%= label_tag :max_price, 'Max Price', class: "form-label" %>
+      <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "Max Price" %>
     </div>
 
-    <%= submit_tag 'Filtrer', class: "btn custom-button" %>
+    <%= submit_tag 'Filter', class: "btn custom-button" %>
   <% end %>
 </div>
 
@@ -61,7 +61,7 @@
         </div>
 
           <div class="card-footer">
-            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-custom" >Réserver</button>
+            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-custom" >Book</button>
           </div>
 
       </div>
