@@ -19,34 +19,37 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @car.price %>">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Reserve my car</h2>
-          <%= simple_form_for [@car, @booking] do |f| %>
+          <%= simple_form_for [@car, @booking], html: { data: { controller: "datepicker" } } do |f| %>
             <div class="form-group">
               <%= f.label :start_date, "Date de début" %>
-              <%= f.date_field :start_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
+              <%= f.date_field :start_date, as: :string, data: {
+                  datepicker_target: "startDateInput",
+                  dynamic_booking_price_target: 'startDateInput',
+                  action: 'change->dynamic-booking-price#updatePrice'
+                }, class: "form-control", placeholder: "jj/mm/aaaa" %>
             </div>
 
             <div class="form-group">
               <%= f.label :end_date, "Date de fin" %>
-              <%= f.date_field :end_date, data: { controller: "datepicker" }, class: "form-control", placeholder: "jj/mm/aaaa" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :price, "Prix total" %>
-              <%= f.text_field :price, class: "form-control", readonly: true %>
+              <%= f.date_field :end_date, as: :string, data: {
+                  datepicker_target: "endDateInput",
+                  dynamic_booking_price_target: 'endDateInput',
+                  action: 'change->dynamic-booking-price#updatePrice'
+                }, class: "form-control", placeholder: "jj/mm/aaaa" %>
             </div>
 
             <div class="container">
               <div class="form-wrapper">
                 <h2>Reserve my car</h2>
                 <!-- Formulaire -->
-                <p>Réservation pour <span id="total-days">0</span> days</p>
-                <p>Prix total : <span id="total-price">0</span> € </p>
+                <p>Réservation pour <span id="total-days" data-dynamic-booking-price-target="daysHolder">0</span> days</p>
+                <p>Prix total : <span id="total-price" data-dynamic-booking-price-target="priceHolder">0</span> € </p>
               </div>
-              
+
             </div>
             <div class="actions">
               <%= f.submit "Réserver", class: "btn btn-primary" %>
