@@ -5,6 +5,10 @@
     <% end %>
 
 
+  <%= form_tag cars_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Recherche", class: "form-control me-2" %>
+        <%= submit_tag 'Rechercher', class: "btn btn-outline-success" %>
+      <% end %>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
