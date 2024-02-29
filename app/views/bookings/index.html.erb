@@ -1,15 +1,15 @@
-<h1>Here are the cars you booked !</h1>
-
+<h1 class="text-center my-4">Here are the cars you booked !</h1>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-<% @bookings.each do |booking| %>
-
-  <div class="card h-100">
-    <div class="card-body">
-      <%= cl_image_tag booking.car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top"%>
-      <h5 class="card-title"> <%= booking.car.brand %> <%= booking.car.model %></h5>
-      <h6>from : <%= booking.start_date&.to_date %>, to : <%= booking.end_date&.to_date %> 🚘</h6>
-  </div>
+  <% @bookings.each do |booking| %>
+    <div class="col">
+      <div class="card h-100 card-custom">
+        <div class="card-body">
+          <%= cl_image_tag booking.car.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <h5 class="card-title"> <%= booking.car.brand %> <%= booking.car.model %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">from : <%= booking.start_date&.to_date %>, to : <%= booking.end_date&.to_date %> 🚘</h6>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
-
-<% end %>

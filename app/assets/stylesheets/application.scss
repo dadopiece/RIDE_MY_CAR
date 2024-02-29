@@ -60,6 +60,7 @@
   border-radius: 15px; /* Bordures arrondies pour les cartes */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère pour donner du relief */
   transition: transform 0.2s; /* Animation pour le survol */
+  margin-bottom: 1.5rem; /* Espacement au-dessous de chaque carte */
 }
 
 .card-custom:hover {
@@ -122,7 +123,37 @@
   align-items: center;
 }
 
-.btn-group {
-  margin-top: 1rem;
+/* Ajoutez de l'espace sous les boutons */
+.toggle-buttons {
+  margin-bottom: 1rem; /* Ajustez cette valeur selon l'espace souhaité */
 }
 
+/* Ajustez l'espacement entre les cartes */
+.row-cols-1 > * {
+  padding: 0.75rem;
+}
+
+.row-cols-md-2 > * {
+  padding: 0.75rem;
+}
+
+.row-cols-lg-4 > * {
+  padding: 0.75rem;
+}
+
+/* Si vous voulez également augmenter l'espace entre les rangées de cartes */
+.row {
+  margin-bottom: 1.5rem; /* Ajustez cette valeur selon l'espace souhaité entre les rangées */
+}
+
+
+/* Espacement au-dessus des boutons, un peu moins que précédemment */
+.btn-group {
+  margin-top: 0.5rem; /* Réduire pour rapprocher de l'élément supérieur */
+  margin-bottom: 2rem; /* Augmenter pour éloigner des cartes en dessous */
+}
+
+/* Ajustez l'espacement entre les rangées de cartes */
+.row {
+  margin-bottom: 2rem; /* Augmenter pour plus d'espace entre les rangées de cartes */
+}
