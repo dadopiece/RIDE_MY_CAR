@@ -5,6 +5,10 @@ class CarsController < ApplicationController
     @cars = Car.all
     @car = Car.new
 
+    if params[:search].present?
+      @cars = @cars.where("brand ILIKE ? OR model ILIKE ? OR address ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    end
+
     if params[:brand].present?
       @cars = @cars.where('brand ILIKE ?', "%#{params[:brand]}%")
     end
@@ -37,7 +41,8 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.new(car_params.with_defaults(user_id: User.first.id))
+    @car = Car.new(car_params)
+    @car.user = current_user
     if @car.save
       redirect_to car_path(@car)
     else
@@ -48,6 +53,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:brand, :model, :price, :photo)
+    params.require(:car).permit(:brand, :model, :price, :photo, :address)
   end
 end

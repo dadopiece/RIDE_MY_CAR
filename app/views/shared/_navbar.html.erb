@@ -6,6 +6,10 @@
 
 
 
+    <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Ville de location", class: "form-control search-input", id: "navbar-search" %>
+      <%= submit_tag 'Rechercher', class: "btn btn-search" %>
+    <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,9 +29,9 @@
             <%= image_tag "https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?ssl=1", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Your up to renting cars ⭐︎", dashboard_path , class: "dropdown-item" %>
 
-
-              <%= link_to "See your bookings", bookings_path , class: "dropdown-item" %>
+              <%= link_to "Your bookings ✅", bookings_path , class: "dropdown-item" %>
 
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
