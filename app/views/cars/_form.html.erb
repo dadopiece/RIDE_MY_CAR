@@ -1,8 +1,27 @@
+<head>
+  <style>
+      body {
+        background-image: url('https://smartcdn.gprod.postmedia.digital/driving/wp-content/uploads/2014/09/mustang.jpg'); /* Specify the path to your image */
+        background-size: cover; /* Cover the entire background */
+        background-position: ; /* Center the background image */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+      }
+  </style>
+</head>
 
-  <%= simple_form_for car do |f| %>
-    <%= f.input :price %>
-    <%= f.input :brand %>
-    <%= f.input :address %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit %>
-  <% end %>
+
+<div class="banner">
+  <div class="container-form px-5 py-5 ">
+
+      <%= simple_form_for car do |f| %>
+        <%= f.input :price %>
+        <%= f.input :brand %>
+        <%= f.input :address %>
+        <%= f.input :photo, as: :file %>
+        <div style="text-align: center;">
+        <%= f.submit 'Publish', class: "btn custom-button px-5 py-2"  %>
+        </div>
+      <% end %>
+    </div>
+
+</div>

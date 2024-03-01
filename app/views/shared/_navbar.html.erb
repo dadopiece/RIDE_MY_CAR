@@ -8,7 +8,10 @@
 
     <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
       <%= text_field_tag :search, params[:search], placeholder: "City location", class: "form-control search-input", id: "navbar-search" %>
-      <%= submit_tag 'Search', class: "btn btn-search" %>
+      <%#= submit_tag 'Search',class: "btn btn-search" %>
+      <%= button_tag(type: "submit", class: "btn btn-search") do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,4 +48,31 @@
       </ul>
     </div>
   </div>
+
+</div>
+
+<div style="position: sticky; top: 0; z-index: 10">
+  <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center filter-form" do %>
+    <div class="form-group mx-2">
+      <%= label_tag :brand, 'Brand', class: "form-label" %>
+      <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "enter brand" %>
+    </div>
+
+    <div class="form-group mx-2">
+      <%= label_tag :model, 'Model', class: "form-label" %>
+      <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "enter model" %>
+    </div>
+
+    <div class="form-group mx-2">
+      <%= label_tag :address, 'Address', class: "form-label" %>
+      <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "enter address" %>
+    </div>
+
+    <div class="form-group mx-2">
+      <%= label_tag :max_price, 'Max Price', class: "form-label" %>
+      <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "enter max price" %>
+    </div>
+
+    <%= submit_tag 'Filter', class: "btn custom-button" %>
+  <% end %>
 </div>
