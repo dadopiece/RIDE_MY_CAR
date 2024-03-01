@@ -12,6 +12,20 @@
 @import "pages/index";
 
 /* Dans votre fichier CSS (par exemple, application.scss) */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; /* Utilisez le poids gras pour les titres */
+}
+
+.btn, .btn-custom {
+  font-family: 'Roboto', sans-serif;
+  /* Gardez les autres styles tels que font-weight, text-transform, etc., pour conserver la conception */
+}
+
 
 .search-input {
   flex-grow: 1;
