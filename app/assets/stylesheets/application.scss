@@ -187,3 +187,16 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   justify-content: space-between; /* cela permettra de pousser le footer au bas de la carte */
 }
+
+/* Style par défaut pour le conteneur de la carte, non visible */
+.mapbox {
+  width: 100%; /* Assurez-vous qu'elle prend toute la largeur */
+  height: 75vh; /* Ajustez la hauteur comme vous le souhaitez */
+  position: relative; /* La position relative est généralement nécessaire pour les conteneurs de carte */
+  z-index: 1; /* Assurez-vous qu'il est au-dessus d'autres éléments si nécessaire */
+}
+
+/* Lorsque la carte doit être visible, la classe 'active' pourrait être ajoutée par StimulusJS */
+.mapbox.active {
+  display: block; /* Rend la carte visible */
+}
