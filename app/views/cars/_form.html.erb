@@ -1,8 +1,13 @@
 
+<div class="container px-5 py-5 mx-5">
   <%= simple_form_for car do |f| %>
     <%= f.input :price %>
     <%= f.input :brand %>
     <%= f.input :address %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <div style="text-align: center;">
+    <%= f.submit 'Publish', class: "btn custom-button px-5 py-2"  %>
+    </div>
+
   <% end %>
+</div>
