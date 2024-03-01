@@ -1,78 +1,79 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to cars_path, class: "navbar-brand" do %>
-      <%= image_tag "https://previews.123rf.com/images/katedemianov/katedemianov1709/katedemianov170900184/86153286-location-de-voitures-anciennes-logo-vintage-monochrome-de-vecteur-isol%C3%A9-sur-fond-blanc.jpg" %>
-    <% end %>
 
-
-
-    <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "City location", class: "form-control search-input", id: "navbar-search" %>
-      <%#= submit_tag 'Search',class: "btn btn-search" %>
-      <%= button_tag(type: "submit", class: "btn btn-search") do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <%= link_to cars_path, class: "navbar-brand" do %>
+        <%= image_tag "https://previews.123rf.com/images/katedemianov/katedemianov1709/katedemianov170900184/86153286-location-de-voitures-anciennes-logo-vintage-monochrome-de-vecteur-isol%C3%A9-sur-fond-blanc.jpg" %>
       <% end %>
-    <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", cars_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Upload a car to rent", new_car_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?ssl=1", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Dashboard ⭐︎", dashboard_path , class: "dropdown-item" %>
 
-              <%= link_to "Your bookings ✅", bookings_path , class: "dropdown-item" %>
-
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            <%= link_to "Create account", new_user_registration_path, class: "nav-link" %>
-          </li>
+      <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "City location", class: "form-control search-input", id: "navbar-search" %>
+        <%#= submit_tag 'Search',class: "btn btn-search" %>
+        <%= button_tag(type: "submit", class: "btn btn-search") do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
-      </ul>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Home", cars_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Upload a car to rent", new_car_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?ssl=1", class: "avatar", alt: "dropdown menu" %>
+            </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Dashboard ⭐︎", dashboard_path , class: "dropdown-item" %>
+
+                <%= link_to "Your bookings ✅", bookings_path , class: "dropdown-item" %>
+
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <%= link_to "Create account", new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+
   </div>
 
-</div>
+  <div style="position: sticky; top: 0; z-index: 10">
+    <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center filter-form" do %>
+      <div class="form-group mx-2">
+        <%= label_tag :brand, 'Brand', class: "form-label" %>
+        <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "enter brand" %>
+      </div>
 
-<div style="position: sticky; top: 0; z-index: 10">
-  <%= form_tag cars_path, method: :get, class: "d-flex justify-content-evenly align-items-center filter-form" do %>
-    <div class="form-group mx-2">
-      <%= label_tag :brand, 'Brand', class: "form-label" %>
-      <%= text_field_tag :brand, params[:brand], class: "form-control custom-input", placeholder: "enter brand" %>
-    </div>
+      <div class="form-group mx-2">
+        <%= label_tag :model, 'Model', class: "form-label" %>
+        <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "enter model" %>
+      </div>
 
-    <div class="form-group mx-2">
-      <%= label_tag :model, 'Model', class: "form-label" %>
-      <%= text_field_tag :model, params[:model], class: "form-control custom-input", placeholder: "enter model" %>
-    </div>
+      <div class="form-group mx-2">
+        <%= label_tag :address, 'Address', class: "form-label" %>
+        <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "enter address" %>
+      </div>
 
-    <div class="form-group mx-2">
-      <%= label_tag :address, 'Address', class: "form-label" %>
-      <%= text_field_tag :address, params[:address], class: "form-control custom-input", placeholder: "enter address" %>
-    </div>
+      <div class="form-group mx-2">
+        <%= label_tag :max_price, 'Max Price', class: "form-label" %>
+        <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "enter max price" %>
+      </div>
 
-    <div class="form-group mx-2">
-      <%= label_tag :max_price, 'Max Price', class: "form-label" %>
-      <%= number_field_tag :max_price, params[:max_price], class: "form-control custom-input", placeholder: "enter max price" %>
-    </div>
-
-    <%= submit_tag 'Filter', class: "btn custom-button" %>
-  <% end %>
-</div>
+      <%= submit_tag 'Filter', class: "btn custom-button" %>
+    <% end %>
+  </div>
