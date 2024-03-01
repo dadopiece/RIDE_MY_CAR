@@ -26,6 +26,9 @@ h1, h2, h3, h4, h5, h6 {
   /* Gardez les autres styles tels que font-weight, text-transform, etc., pour conserver la conception */
 }
 
+.form-label {
+  font-weight: 600;
+}
 
 .search-input {
   flex-grow: 1;
@@ -88,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 /* Styles pour le texte des prix */
@@ -135,6 +138,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bolder;
 }
 
 /* Ajoutez de l'espace sous les boutons */
