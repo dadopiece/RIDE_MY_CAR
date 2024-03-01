@@ -1,31 +1,35 @@
-<div class="container">
+<div class="container px-5 py-5" >
   <div class="row justify-content-end">
     <div class="col-md-6">
-      <div class="card card-custom">
+
         <div class="card-body">
           <% if @car.photo.attached? %>
-            <%= cl_image_tag @car.photo.key, height: 160, width: 160, crop: :fill, class: "card-img-top" %>
+          <div class="px-3 py-3">
+            <%= cl_image_tag @car.photo.key, height: 230, width: 230, crop: :fill, class: "card-img-top" %>
+          </div>
           <% else %>
-            Pas d'image
+            No image
           <% end %>
-          <h5 class="card-title"><%= @car.brand %> <%= @car.model %></h5>
-          <p class="card-text">
-            <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
-            <strong>Brand :</strong> <%= @car.brand %>
-          </p>
-          <p class="card-text">
-            Prix par jour : <%= number_to_currency(@car.price, unit: "€", delimiter: " ", format: "%n %u") %>
-          </p>
+          <div class="mt-3">
+            <h5 class="card-title"><%= @car.brand %> <%= @car.model %></h5>
+            <p class="card-text">
+              <!-- Ajoutez d'autres détails de la voiture si nécessaire -->
+              <strong>Brand :</strong> <%= @car.brand %>
+            </p>
+            <p class="card-text">
+              Price per day : <%= number_to_currency(@car.price, unit: "€", delimiter: " ", format: "%n %u") %>
+            </p>
+          </div>
         </div>
-      </div>
+
     </div>
     <div class="col-md-6" data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @car.price %>">
-      <div class="card card-custom">
+
         <div class="card-body">
-          <h2 class="card-title">Reserve my car</h2>
+          <h2 class="card-title mb-3" style="text-align: center;">Reserve my car</h2>
           <%= simple_form_for [@car, @booking], html: { data: { controller: "datepicker" } } do |f| %>
             <div class="form-group">
-              <%= f.label :start_date, "Date de début" %>
+              <%= f.label :start_date, "Start date" %>
               <%= f.date_field :start_date, as: :string, data: {
                   datepicker_target: "startDateInput",
                   dynamic_booking_price_target: 'startDateInput',
@@ -34,7 +38,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :end_date, "Date de fin" %>
+              <%= f.label :end_date, "End date" %>
               <%= f.date_field :end_date, as: :string, data: {
                   datepicker_target: "endDateInput",
                   dynamic_booking_price_target: 'endDateInput',
@@ -45,17 +49,17 @@
             <div class="container">
               <div class="form-wrapper">
                 <!-- Formulaire -->
-                <p>Réservation pour <span id="total-days" data-dynamic-booking-price-target="daysHolder">0</span> days</p>
-                <p>Prix total : <span id="total-price" data-dynamic-booking-price-target="priceHolder">0</span> € </p>
+                <p class="mt-3">Booking for <span id="total-days" data-dynamic-booking-price-target="daysHolder">0</span> days</p>
+                <h5><strong>Total price:</strong> <span id="total-price" data-dynamic-booking-price-target="priceHolder" style="color: blue;">0</span> € </h5>
               </div>
 
             </div>
-            <div class="actions">
-             <%= f.submit "Réserver", class: "btn btn-custom" %>
+            <div class="actions mt-5" style="text-align: center;">
+             <%= f.submit "Book 🚘", class: "btn btn-custom" %>
             </div>
           <% end %>
         </div>
-      </div>
+
     </div>
   </div>
 </div>
