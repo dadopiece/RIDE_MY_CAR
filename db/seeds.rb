@@ -51,7 +51,17 @@ adresses_paris = [
   "82 Rue de Maubeuge, 75009 Paris",
   "70 Rue de Belleville, 75020 Paris",
   "33 Avenue du Général Leclerc, 75014 Paris",
-  "5 Rue de l'École de Médecine, 75006 Paris"
+  "5 Rue de l'École de Médecine, 75006 Paris",
+  "3 Place des Quinconces, 33000 Bordeaux",
+  "38 Place de la Bourse, 33000 Bordeaux",
+  "19 Allées de Tourny, 33000 Bordeaux",
+  "56 Place de la Bourse, 33000 Bordeaux",
+  "81 Rue des Trois-Conils, 33000 Bordeaux",
+  "23 Cours Victor Hugo, 33000 Bordeaux",
+  "11 Rue Sainte-Catherine, 33000 Bordeaux",
+  "84 Rue des Trois-Conils, 33000 Bordeaux",
+  "22 Rue des Trois-Conils, 33000 Bordeaux",
+  "77 Cours Victor Hugo, 33000 Bordeaux"
 ]
 
 # Création de 10 voitures avec adresses réelles
