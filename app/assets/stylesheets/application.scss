@@ -105,15 +105,15 @@
   margin: 5px; /* Espacement autour des boutons */
   width: 150px; /* Largeur plus longue pour les boutons */
   background-color: #ffffff; /* Couleur de fond pour les boutons */
-  color: #495057; /* Couleur du texte pour les boutons */
+  color: #AD88C6; /* Couleur du texte pour les boutons */
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre légère pour donner du relief */
 }
 
 .btn-toggle.active, .btn-toggle:hover {
   color: #fff;
-  background-color: #007bff; /* Couleur de fond pour le bouton actif ou au survol */
-  border-color: #007bff;
+  background-color: #AD88C6; /* Couleur de fond pour le bouton actif ou au survol */
+  border-color: #AD88C6;
 }
 
 /* Conteneur pour les boutons centré */
