@@ -211,7 +211,42 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #ffffff85; /* Example background color */; /* Example padding */
 }
 
-  
+
 .modal-body img {
   border-radius: 6px !important;
 }
+
+.navbar-lewagon {
+  background-image: url('Background2.webp'); /* Chemin vers votre image de fond */
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar-lewagon .container-fluid {
+  position: relative; /* Pour permettre le positionnement de l'image de fond */
+}
+
+// .navbar-lewagon::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.5); /* Couleur du filtre (noir avec une opacité de 0.5) */
+// }
+
+/* Styles pour rendre le texte lisible sur l'image de fond */
+.navbar-lewagon .navbar-brand,
+.navbar-lewagon .nav-link {
+  color: white; /* Couleur du texte */
+}
+
+.navbar-lewagon .form-control,
+.navbar-lewagon .custom-input,
+.navbar-lewagon .search-input {
+  // background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond des champs de formulaire avec une opacité */
+  color: black; /* Couleur du texte */
+}
+
+// /* Ajouter d'autres styles personnalisés selon vos besoins */

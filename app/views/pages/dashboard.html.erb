@@ -1,30 +1,30 @@
 
- <div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-<% @cars.each do |car| %>
+  <!-- Cartes des voitures avec le style personnalisé -->
+  <div data-switch-target="cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <% @cars.each do |car| %>
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 card-custom">
           <% if car.photo.attached? %>
             <%= cl_image_tag car.photo.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
           <% else %>
-            Pas d'image
+            <div class="card-img-top placeholder-image">No image</div>
           <% end %>
           <div class="card-body">
             <h5 class="card-title">
               <%= car.brand %> <%= car.model %>
             </h5>
             <p class="card-text">
-              <!-- Vous pouvez ajouter plus de détails ici -->
-              Quelques détails supplémentaires sur la voiture ici.
+              More details.
             </p>
-            <p class="card-text">
-              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></strong>
+            <p class="card-text price-text">
+              <strong><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u per day") %></strong>
             </p>
           </div>
           <div class="card-footer">
-            <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
+            <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-custom">Book</button>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
