@@ -180,6 +180,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%; /* pour que l'image occupe toute la largeur de la carte */
   height: 160px; /* ou toute autre hauteur fixe appropriée */
   object-fit: cover; /* pour s'assurer que l'image couvre bien l'espace défini */
+  border-radius: 20px 20px 0 0;
 }
 
 .card-body {
@@ -199,4 +200,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Lorsque la carte doit être visible, la classe 'active' pourrait être ajoutée par StimulusJS */
 .mapbox.active {
   display: block; /* Rend la carte visible */
+}
+
+.modal-body img {
+  border-radius: 6px !important;
 }
