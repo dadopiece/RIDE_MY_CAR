@@ -63,9 +63,10 @@ adresses_paris = [
   "22 Rue des Trois-Conils, 33000 Bordeaux",
   "77 Cours Victor Hugo, 33000 Bordeaux"
 ]
-
-# Création de 10 voitures avec adresses réelles
+# Création de 20 voitures avec adresses réelles et images locales
 adresses_paris.each_with_index do |adresse, index|
+  break if index >= 20 # Limite à 20 voitures pour correspondre au nombre d'images disponibles
+
   car = Car.create!(
     model: Faker::Vehicle.model,
     brand: Faker::Vehicle.make,
@@ -74,9 +75,17 @@ adresses_paris.each_with_index do |adresse, index|
     address: adresse
   )
 
-  # Générer une URL unique pour chaque voiture et l'attacher
-  file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['car']) + "?random=#{index}")
-  car.photo.attach(io: file, filename: "car_#{index + 1}.png", content_type: "image/png")
+  # Chemin vers l'image locale dans le dossier public/images
+  image_path = Rails.root.join("app", "assets", "images", "Car#{index + 1}.webp")
+  # image_path = Rails.root.join("RIDE_MY_CAR/app/images/Car#{index + 1}.webp")
+  # puts "Chemin de l'image: #{image_path}"
+
+
+  if File.exist?(image_path)
+    car.photo.attach(io: File.open(image_path), filename: "Car#{index + 1}.webp", content_type: "image/webp")
+  else
+    puts "Image Car#{index + 1}.webp non trouvée"
+  end
 end
 
 # Création de réservations
