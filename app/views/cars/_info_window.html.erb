@@ -1,11 +1,13 @@
-<div>
+<div class="card-footer">
   <h3><%= car.brand %> <%= car.model %></h3>
   <% if car.photo.attached? %>
     <%= image_tag car.photo, size: "100x100" %>
   <% else %>
-    <img src="<%= car.image_url %>" alt="Car Image" style="width: 100px; height: 100px;">
+    <img src="<%= car.image_url %>" alt="Car Image" style="width: 100%; height: 100%;">
   <% end %>
   <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u per day") %></p>
   <p><%= car.address %></p>
-  <%= link_to "Book", car_path(car), class: "btn btn-primary" %>
+  <div class="card-footer">
+    <button data-action="click->modal#launch" data-url="<%= car_path(car, layout: false) %>" class="btn btn-primary btn-custom"> Book</button>
+  </div>
 </div>
