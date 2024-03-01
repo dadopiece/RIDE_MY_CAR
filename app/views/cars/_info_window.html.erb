@@ -5,7 +5,7 @@
   <% else %>
     <img src="<%= car.image_url %>" alt="Car Image" style="width: 100px; height: 100px;">
   <% end %>
-  <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u par jour") %></p>
+  <p><%= number_to_currency(car.price, unit: "€", delimiter: " ", format: "%n %u per day") %></p>
   <p><%= car.address %></p>
-  <%= link_to "Réserver", car_path(car), class: "btn btn-primary" %>
+  <%= link_to "Book", car_path(car), class: "btn btn-primary" %>
 </div>

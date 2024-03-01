@@ -7,8 +7,8 @@
 
 
     <%= form_tag cars_path, method: :get, class: "d-flex flex-grow-1 mx-2" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Ville de location", class: "form-control search-input", id: "navbar-search" %>
-      <%= submit_tag 'Rechercher', class: "btn btn-search" %>
+      <%= text_field_tag :search, params[:search], placeholder: "City location", class: "form-control search-input", id: "navbar-search" %>
+      <%= submit_tag 'Search', class: "btn btn-search" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
             <%= image_tag "https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?ssl=1", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Your up to renting cars ⭐︎", dashboard_path , class: "dropdown-item" %>
+              <%= link_to "Dashboard ⭐︎", dashboard_path , class: "dropdown-item" %>
 
               <%= link_to "Your bookings ✅", bookings_path , class: "dropdown-item" %>
 
@@ -39,7 +39,7 @@
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Create account", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
