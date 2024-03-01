@@ -200,3 +200,12 @@ h1, h2, h3, h4, h5, h6 {
 .mapbox.active {
   display: block; /* Rend la carte visible */
 }
+
+.container-form {
+  justify-content: center; /* Align horizontally */
+  align-items: center;
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  background-color: #ffffff85; /* Example background color */
+; /* Example padding */
+}
